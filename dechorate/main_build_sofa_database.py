@@ -104,7 +104,7 @@ if __name__ == "__main__":
                 sofa.GLOBAL_Title = f'dEchorate_{title_suffix}'
 
                 sofa.GLOBAL_DateCreated = '2024-03-24'
-                sofa.GLOBAL_DateModified = sofa.GLOBAL_DateCreated
+                sofa.GLOBAL_DateModified = '2024-07-07'
 
                 sofa.GLOBAL_AuthorContact = 'diego.dicarlo89@gmail.com'
                 sofa.GLOBAL_Organization = 'INRIA Rennes (Fr)'
@@ -113,9 +113,7 @@ if __name__ == "__main__":
                 sofa.GLOBAL_ApplicationVersion = platform.python_version()
 
 
-                sofa.GLOBAL_Comment = """- website: 'http://diegodicarlo.com/datasets/dechorate';
-                \n- code: 'https://github.com/Chutlhu/DechorateDB'; 
-                \n- paper: 'https://doi.org/10.1186/s13636-021-00229-0'"""
+                sofa.GLOBAL_Comment = 'Annotated echoes are available as h5 file on the Zenodo page'
 
 
                 sofa.GLOBAL_History = \
@@ -130,7 +128,7 @@ if __name__ == "__main__":
 
 
                 sofa.GLOBAL_References = \
-                """@article{dicarlo2021dechorate,
+                """- article: @article{dicarlo2021dechorate,
                 \ntitle={dEchorate: a calibrated room impulse response dataset for echo-aware signal processing},
                 \nauthor={Di Carlo, Diego and Tandeitnik, Pinchas and Foy, Cedri{\'c} and Bertin, Nancy and Deleforge, Antoine and Gannot, Sharon},
                 \njournal={EURASIP Journal on Audio, Speech, and Music Processing},
@@ -139,7 +137,11 @@ if __name__ == "__main__":
                 \npages={1--15},
                 \nyear={2021},
                 \npublisher={Springer}
-                \n}"""
+                \n};
+                \n- website: 'http://diegodicarlo.com/datasets/dechorate';
+                \n- code: 'https://github.com/Chutlhu/DechorateDB'; 
+                \n- paper: 'https://doi.org/10.1186/s13636-021-00229-0'
+                """
 
                 ## --- RIRS --- ##
                 sofa.Data_IR = mimo_srir.T[None,:,:] 
