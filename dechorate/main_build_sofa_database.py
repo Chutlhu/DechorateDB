@@ -113,24 +113,24 @@ if __name__ == "__main__":
                 sofa.GLOBAL_ApplicationVersion = platform.python_version()
 
 
-                sofa.GLOBAL_Comment = """
-                  - website: 'http://diegodicarlo.com/datasets/dechorate';
+                sofa.GLOBAL_Comment = """- website: 'http://diegodicarlo.com/datasets/dechorate';
                 \n- code: 'https://github.com/Chutlhu/DechorateDB'; 
                 \n- paper: 'https://doi.org/10.1186/s13636-021-00229-0'"""
 
 
-                sofa.GLOBAL_History = """
-                  - 2019-01-20: Recorded raw data
+                sofa.GLOBAL_History = \
+                """- 2019-01-20: Recorded raw data
                 \n- 2019-06-17: Processed annotation
                 \n- 2021-03-22: Publication on Zenodo v0
                 \n- 2022-04-21: Creation SOFA
                 \n- 2023-01-26: New Sofa
                 \n- 2024-03-24: Updating Sofa
+                \n- 2024-07-07: Updating Sofa
                 """
 
 
-                sofa.GLOBAL_References = """
-                @article{dicarlo2021dechorate,
+                sofa.GLOBAL_References = \
+                """@article{dicarlo2021dechorate,
                 \ntitle={dEchorate: a calibrated room impulse response dataset for echo-aware signal processing},
                 \nauthor={Di Carlo, Diego and Tandeitnik, Pinchas and Foy, Cedri{\'c} and Bertin, Nancy and Deleforge, Antoine and Gannot, Sharon},
                 \njournal={EURASIP Journal on Audio, Speech, and Music Processing},
@@ -158,6 +158,7 @@ if __name__ == "__main__":
 
                 sofa.GLOBAL_ListenerDescription = 'handcrafted 5-mics non-Uniform Linear Array'
 
+
                 sofa.ListenerPosition = arr_pos[:,arr_idx]
                 sofa.ListenerPosition_Type = 'cartesian'
                 sofa.ListenerPosition_Units = 'metre'
@@ -170,7 +171,8 @@ if __name__ == "__main__":
 
                 # Receiver = MICROPHONE
                 sofa.GLOBAL_ReceiverShortName = 'capsule'
-                sofa.GLOBAL_ReceiverDescription = 'AKG CK32'
+                sofa.GLOBAL_ReceiverDescription = ['AKG CK32']
+                sofa.ReceiverDescriptions = [['']]*5
                 sofa.ReceiverPosition = mic_pos[:,mic_idxs].T
                 sofa.ReceiverPosition_Type = 'cartesian'
                 sofa.ReceiverPosition_Units = 'metre'
@@ -178,7 +180,6 @@ if __name__ == "__main__":
                 sofa.ReceiverUp = [[0,0,1]]*5
                 sofa.ReceiverView_Type = 'cartesian'
                 sofa.ReceiverView_Units = 'metre'
-
 
                 # --- SOURCES --- ## 
 
@@ -209,42 +210,6 @@ if __name__ == "__main__":
                 sofa.RoomCornerB = room_size
                 sofa.RoomCorners_Type = 'cartesian'
                 sofa.RoomCorners_Units = 'metre'
-
-                # import ipdb; ipdb.set_trace()
-                # sofa.RoomTemperature = constants['room_temperature']
-                # sofa.Temperature_Units = "degree Celsius"
-
-
-                # sofa.add_variable("Temperature", constants['room_temperature'], "double", "I")
-                # sofa.add_variable("RelativeHumidity", constants['room_humidity'], "double", "I")
-                # sofa.add_attribute("RelativeHumidity_Units", "percentage")
-                # sofa.add_variable("SpeedOfSound", constants['speed_of_sound'], "double", "I")
-                # sofa.add_attribute("SpeedOfSound_Units", "metre/seconds")
-
-                # ## -- ECHOES -- ##
-                # room = rooms[room_idx]
-                # sofa.add_variable("ReflectiveSurfacesCode", room, "string", "S")
-                # sofa.add_attribute("ReflectiveSurfacesCode_Order", "Floor,West,South,East,North")
-
-                # sofa.add_variable("RoomFloorIsRefective",    int(int(room[0]) > 0), "double", "I")
-                # sofa.add_variable("RoomCleilingIsRefective", int(int(room[1]) > 0), "double", "I")
-                # sofa.add_variable("RoomWestIsRefective",     int(int(room[2]) > 0), "double", "I")
-                # sofa.add_variable("RoomSouthIsRefective",    int(int(room[3]) > 0), "double", "I")
-                # sofa.add_variable("RoomEastIsRefective",     int(int(room[4]) > 0), "double", "I")
-                # sofa.add_variable("RoomNorthIsRefective",    int(int(room[5]) > 0), "double", "I")
-                # sofa.add_variable("RoomHasFornitures",       int(int(room[1]) > 1), "double", "I")
-                
-                # ## --- ECHOES --- ##
-                # if src_idx < 6:
-                #     toas = echo_toa[:,mic_idxs,src_idx]
-                #     wall_code = echo_wall[:,mic_idxs,src_idx][:,0].tobytes().decode('UTF-8')
-                # else:
-                #     toas = echo_toa[:,mic_idxs,0]*0
-                #     wall = 'NaN'
-                # sofa.add_variable("EchoTimings", toas, "double", "KR")
-                # sofa.add_attribute("EchoTimings_Units", "seconds")
-                # sofa.add_variable("EchoWall", wall_code, "string", "S")
-                # sofa.add_attribute("EchoWall_Units", "wall_code")
 
                 sofa.verify()
 
